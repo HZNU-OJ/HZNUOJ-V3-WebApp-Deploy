@@ -62,14 +62,13 @@ jobs:
       - name: Minify HTML Index
         uses: Dup4/minify-html-action@v9
         with:
-          src: './dist/index.html'
+          src: './HZNUOJ-V3-WebApp/dist/index.html'
 
       - name: Mkdir Index Dir
         run: |
           cd HZNUOJ-V3-WebApp
           mkdir index_dist
           cp ./dist/index.html ./index_dist/index.html
-
 
       - name: Release All
         uses: JamesIves/github-pages-deploy-action@3.6.2
