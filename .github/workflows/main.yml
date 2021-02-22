@@ -1,9 +1,9 @@
-name: CD
+name: Deploy
 on:
   workflow_dispatch:
 
 jobs:
-  cd:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
