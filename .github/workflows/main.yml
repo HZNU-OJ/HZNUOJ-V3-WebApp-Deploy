@@ -64,12 +64,27 @@ jobs:
         with:
           src: './dist/index.html'
 
-      - name: Release
+      - name: Mkdir Index Dir
+        run: |
+          cd HZNUOJ-V3-WebApp
+          mkdir index_dist
+          cp ./dist/index.html ./index_dist/index.html
+
+
+      - name: Release All
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: HZNUOJ-V3-WebApp/dist # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+
+      - name: Release Index
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: deploy # The branch the action should deploy to.
+          FOLDER: HZNUOJ-V3-WebApp/index_dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
 
       - name: Create Release # 创建Release，可以在仓库看到一个个版本
